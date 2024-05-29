@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\BadRequestException;
 use App\Http\Requests\Api\v1\Notebook\CreateRequest;
 use App\Http\Requests\Api\v1\Notebook\UpdateRequest;
 use App\Http\Resources\NotebookResource;
@@ -10,6 +11,7 @@ use App\Services\Interfaces\INotebookService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class NotebookService implements INotebookService
 {
@@ -22,6 +24,9 @@ class NotebookService implements INotebookService
 
     public function all(Request $request)
     {
+        if (!is_int($request->query('limit'))) {
+            throw new BadRequestException();
+        }
         $notebooks = $this->repository->paginate($request->query('limit'));
         return NotebookResource::collection($notebooks);
     }
@@ -84,6 +89,9 @@ class NotebookService implements INotebookService
     {
         try {
             $notebook = $this->repository->firstOrfail($id);
+            if ($notebook->photo_url) {
+                Storage::delete(Str::replace(config('app.url') . '/storage', '', $notebook->photo_url));
+            }
             $this->repository->delete($notebook);
             return response()->json(['message' => 'Record successfully deleted'], 200);
         } catch (ModelNotFoundException $e) {

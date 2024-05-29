@@ -15,7 +15,7 @@ class NotebookResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return [
+        return array_filter([
             'id' => $this->id,
             "fullName" => $this->full_name,
             "company" => $this->company,
@@ -23,6 +23,6 @@ class NotebookResource extends JsonResource
             "email" => $this->email,
             "dateOfBirth" => $this->date_of_birth,
             'photoUrl' => $this->photo_url
-        ];
+        ]);
     }
 }

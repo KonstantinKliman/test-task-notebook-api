@@ -1,0 +1,528 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Notebook API(Test task)",
+        "version": "1.0"
+    },
+    "paths": {
+        "/api/": {},
+        "/api/v1/notebook": {
+            "post": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "Создание записи",
+                "operationId": "38b5c77e4129659b839f7feb26c20e9d",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "fullName",
+                                    "phone",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "fullName": {
+                                        "description": "Полное имя",
+                                        "type": "string",
+                                        "example": "fullname"
+                                    },
+                                    "company": {
+                                        "description": "Название компании",
+                                        "type": "string",
+                                        "example": "company name"
+                                    },
+                                    "phone": {
+                                        "description": "Номер телефона",
+                                        "type": "string",
+                                        "example": "88005553535"
+                                    },
+                                    "email": {
+                                        "description": "Электронная почта",
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "email@example.com"
+                                    },
+                                    "dateOfBirth": {
+                                        "description": "Дата рождения",
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2000-01-01"
+                                    },
+                                    "photoUrl": {
+                                        "description": "Фото",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "fullName",
+                                    "phone",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "fullName": {
+                                        "description": "Полное имя",
+                                        "type": "string",
+                                        "example": "fullname"
+                                    },
+                                    "company": {
+                                        "description": "Название компании",
+                                        "type": "string",
+                                        "example": "company name",
+                                        "nullable": true
+                                    },
+                                    "phone": {
+                                        "description": "Номер телефона",
+                                        "type": "string",
+                                        "example": "88005553535"
+                                    },
+                                    "email": {
+                                        "description": "Электронная почта",
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "email@example.com"
+                                    },
+                                    "dateOfBirth": {
+                                        "description": "Дата рождения",
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2000-01-01",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "fullName": {
+                                            "type": "string",
+                                            "example": "fullname"
+                                        },
+                                        "company": {
+                                            "type": "string",
+                                            "example": "company name"
+                                        },
+                                        "phone": {
+                                            "type": "string",
+                                            "example": "88005553535"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "email@example.com"
+                                        },
+                                        "dateOfBirth": {
+                                            "type": "string",
+                                            "example": "2000-01-01"
+                                        },
+                                        "photoUrl": {
+                                            "type": "string",
+                                            "example": "http://example.com/uploads/photo.jpg"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/notebook/{id}": {
+            "get": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "Получение одной записи",
+                "operationId": "ababb837af40cb1c163645a12fe617e5",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID записи",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "fullName": {
+                                            "type": "string",
+                                            "example": "fullname"
+                                        },
+                                        "company": {
+                                            "type": "string",
+                                            "example": "company name",
+                                            "nullable": true
+                                        },
+                                        "phone": {
+                                            "type": "string",
+                                            "example": "88005553535"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "email@example.com"
+                                        },
+                                        "dateOfBirth": {
+                                            "type": "string",
+                                            "example": "2000-01-01",
+                                            "nullable": true
+                                        },
+                                        "photoUrl": {
+                                            "type": "string",
+                                            "example": "http://example.com/uploads/photo.jpg",
+                                            "nullable": true
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No query results for model [App\\\\Models\\\\Notebook]."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "Изменение записи",
+                "operationId": "bb1156cfa6eb1f8628196669925787c7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID записи",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "fullName",
+                                    "phone",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "fullName": {
+                                        "description": "Полное имя",
+                                        "type": "string",
+                                        "example": "fullname"
+                                    },
+                                    "company": {
+                                        "description": "Название компании",
+                                        "type": "string",
+                                        "example": "company name"
+                                    },
+                                    "phone": {
+                                        "description": "Номер телефона",
+                                        "type": "string",
+                                        "example": "88005553535"
+                                    },
+                                    "email": {
+                                        "description": "Электронная почта",
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "email@example.com"
+                                    },
+                                    "dateOfBirth": {
+                                        "description": "Дата рождения",
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2000-01-01"
+                                    },
+                                    "photoUrl": {
+                                        "description": "Фото",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "fullName",
+                                    "phone",
+                                    "email"
+                                ],
+                                "properties": {
+                                    "fullName": {
+                                        "description": "Полное имя",
+                                        "type": "string",
+                                        "example": "fullname"
+                                    },
+                                    "company": {
+                                        "description": "Название компании",
+                                        "type": "string",
+                                        "example": "company name",
+                                        "nullable": true
+                                    },
+                                    "phone": {
+                                        "description": "Номер телефона",
+                                        "type": "string",
+                                        "example": "88005553535"
+                                    },
+                                    "email": {
+                                        "description": "Электронная почта",
+                                        "type": "string",
+                                        "format": "email",
+                                        "example": "email@example.com"
+                                    },
+                                    "dateOfBirth": {
+                                        "description": "Дата рождения",
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2000-01-01",
+                                        "nullable": true
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "fullName": {
+                                            "type": "string",
+                                            "example": "fullname"
+                                        },
+                                        "company": {
+                                            "type": "string",
+                                            "example": "company name"
+                                        },
+                                        "phone": {
+                                            "type": "string",
+                                            "example": "88005553535"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "email@example.com"
+                                        },
+                                        "dateOfBirth": {
+                                            "type": "string",
+                                            "example": "2000-01-01"
+                                        },
+                                        "photoUrl": {
+                                            "type": "string",
+                                            "example": "http://example.com/uploads/photo.jpg"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No query results for model [App\\\\Models\\\\Notebook]."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "Удаление одной записи",
+                "operationId": "d64f43d89a487257af2cb828a9a4b447",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID записи",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Record successfully deleted"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "No query results for model [App\\\\Models\\\\Notebook]."
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/notebook?limit={perPage}": {
+            "get": {
+                "tags": [
+                    "Notebook"
+                ],
+                "summary": "Получение всех записей",
+                "operationId": "9be021746d336848ad34de3ebae1ae40",
+                "parameters": [
+                    {
+                        "name": "perPage",
+                        "in": "path",
+                        "description": "Количество записей на одной странице",
+                        "required": true,
+                        "example": 10
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "fullName": {
+                                                        "type": "string",
+                                                        "example": "fullname"
+                                                    },
+                                                    "company": {
+                                                        "type": "string",
+                                                        "example": "company name",
+                                                        "nullable": true
+                                                    },
+                                                    "phone": {
+                                                        "type": "string",
+                                                        "example": "88005553535"
+                                                    },
+                                                    "email": {
+                                                        "type": "string",
+                                                        "example": "email@example.com"
+                                                    },
+                                                    "dateOfBirth": {
+                                                        "type": "string",
+                                                        "example": "2000-01-01",
+                                                        "nullable": true
+                                                    },
+                                                    "photoUrl": {
+                                                        "type": "string",
+                                                        "example": "http://example.com/uploads/photo.jpg",
+                                                        "nullable": true
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        },
+                                        "links": {
+                                            "type": "object"
+                                        },
+                                        "meta": {
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "example": []
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

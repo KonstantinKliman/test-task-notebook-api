@@ -15,5 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
+        $exceptions->render(function (\App\Exceptions\BadRequestException $e) {
+            return response()->json(null, $e->getCode());
+        });
     })->create();

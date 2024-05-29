@@ -5,12 +5,8 @@ namespace App\Http\Controllers\Api\v1;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\v1\Notebook\CreateRequest;
 use App\Http\Requests\Api\v1\Notebook\UpdateRequest;
-use App\Http\Resources\NotebookResource;
-use App\Models\Notebook;
 use App\Services\Interfaces\INotebookService;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class NotebookController extends Controller
 {
@@ -26,7 +22,7 @@ class NotebookController extends Controller
      */
     public function index(Request $request)
     {
-        $this->service->all($request);
+        return $this->service->all($request);
     }
 
     /**
@@ -42,7 +38,7 @@ class NotebookController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        $this->service->store($request);
+        return $this->service->store($request);
     }
 
     /**
@@ -50,7 +46,7 @@ class NotebookController extends Controller
      */
     public function show(int $id)
     {
-        $this->service->getById($id);
+        return $this->service->getById($id);
     }
 
     /**
@@ -66,7 +62,7 @@ class NotebookController extends Controller
      */
     public function update(UpdateRequest $request, int $id)
     {
-        $this->service->update($request, $id);
+        return $this->service->update($request, $id);
     }
 
     /**
@@ -74,6 +70,6 @@ class NotebookController extends Controller
      */
     public function destroy(int $id)
     {
-        $this->service->delete($id);
+        return $this->service->delete($id);
     }
 }
