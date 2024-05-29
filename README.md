@@ -1,6 +1,6 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-###### Задача:
+## Задача:
 
 >Разработать REST API для записной книжки c эндпоинтами:
 
@@ -15,14 +15,14 @@
 >Добавить возможность постраничного вывода записей,
 >Добавить Swagger для отображения эндпоинтов
 >Дополнительно: Сделать запуск приложения из Docker-контейнера
-###### Стек:
+## Стек:
 
 - Laravel 11.0
 - MySQL 8.0.32
 - PHP 8.3.7
 - Docker
 
-###### Установка проекта
+## Установка проекта
 
 1. Клонируем репозиторий
 
@@ -65,7 +65,7 @@ sail up -d
 ```
 
 6. Переходим на `http://localhost/api/documentation` , где описана документация API
-###### Тестирование приложения
+## Тестирование приложения
 
 Данное приложение я тестировал через Postman
 
